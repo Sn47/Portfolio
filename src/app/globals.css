@@ -2,32 +2,604 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
+/* Custom Styles */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* Centering for Large Screens */
+@media (min-width: 1024px) { /* Tailwind's 'lg' breakpoint */
+  .container {
+    max-width: 1200px; /* Adjust based on your design */
+    margin: 0 auto; /* Center container */
+  }
+
+  .main {
+    padding: 4rem;
+    max-width: 1200px; /* Adjust based on your design */
+    margin: 0 auto; /* Center content */
+  }
+
+  .title {
+    font-size: 5rem; /* Adjust font size for larger screens */
+  }
+
+  .description {
+    font-size: 2rem; /* Adjust font size for larger screens */
+  }
+
+  .card {
+    padding: 2.5rem; /* Adjust padding for larger screens */
+  }
+
+  .button {
+    padding: 1.5rem 3rem; /* Adjust padding for larger screens */
+  }
+}
+
+.container {
+  padding: 0 2rem;
+}
+
+.main {
+  min-height: 100vh;
+  padding: 4rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+  font-size: 4rem;
+  text-align: center;
+  opacity: 1; /* Fully visible */
+  transition: opacity 0.5s ease-out; /* Smooth fade-out effect */
+}
+
+/* @font-face {
+  font-family: 'MyCustomFont';
+  src: url('/Skyer-TrialVersion.otf') format('opentype');
+} */
+
+.title .bold {
+  /* font-family: 'MyCustomFont'; */
+  font-weight: bold;
+}
+
+
+.description {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.card {
+  padding: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.button {
+  background-color: #007bff;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-top: 4rem;
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 60px;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Text Animation for Word Change */
+.words-wrapper {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.word {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.word.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Existing styles */
+
+.bold {
+  font-weight: bold;
+}
+
+.title .designer {
+  font-size: 1rem; /* Make the text smaller */
+  font-weight:300; /* Make the text thinner */
+  letter-spacing: 0cap;
+
+}
+
+/* Other styles remain unchanged */
+/* Add these styles to your existing CSS file or within a <style> tag */
+/* Add these styles to your existing CSS file or within a <style> tag */
+
+/* Add these styles to your existing CSS file or within a <style> tag */
+/* Add these styles to your existing CSS file or within a <style> tag */
+/* Floating buttons container */
+.floating-buttons {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Increased gap for better spacing */
+}
+
+/* Floating button styling */
+.floating-button {
+  width: 60px; /* Size of the button */
+  height: 60px; /* Size of the button */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  /* box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); */
+  transition: background-color 0.3s;
+  background-size: 50%; /* Adjust size of the icon */
+  background-repeat: no-repeat;
+  background-position: center; /* Center the icon */
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Air-like floating effect */
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-1px) translateX(1px);
+  }
+  50% {
+    transform: translateY(0) translateX(-1px);
+  }
+  75% {
+    transform: translateY(1px) translateX(1px);
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+}
+
+.floating-button:hover {
+  background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent color for hover effect */
+}
+
+/* Specific button images */
+.button-1 {
+  background-image: url('/mortarboard.png'); /* Replace with actual path */
+}
+
+.button-2 {
+  background-image: url('/engineering.png'); /* Replace with actual path */
+}
+
+.button-3 {
+  background-image: url('/award.png'); /* Replace with actual path */
+}
+
+.button-4 {
+  background-image: url('/homework.png'); /* Replace with actual path */
+}
+
+.button-5 {
+  background-image: url('/project.png'); /* Replace with actual path */
+}
+
+.button-6 {
+  background-image: url('/creative-thinking.png'); /* Replace with actual path */
+}
+
+/* Portrait container to center the image */
+.portrait-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px; /* Space between the portrait and the grid */
+  position: relative; /* Required for the floating effect to work properly */
+}
+
+/* Portrait image styling */
+.portrait {
+  width: 400px; /* Adjust width as needed */
+  height: 500px; /* Adjust height as needed */
+  border-radius: 10%; /* Rounded corners */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow for a floating effect */
+  animation: float 4s ease-in-out infinite; /* Floating animation */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+/* Floating effect */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-1px) translateX(1px);
+  }
+  50% {
+    transform: translateY(0) translateX(-1px);
+  }
+  75% {
+    transform: translateY(1px) translateX(1px);
+  }
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Hover effect for portrait */
+.portrait {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.portrait:hover {
+  transform: scale(1.05) rotate(2deg); /* Slightly enlarge and rotate the image */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Increase shadow on hover */
+}/* General Section Styles */
+.education-section, .work-section {
+  padding: 40px;
+  background-color: #f7f7f7; /* Light gray background */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  max-width: 1200px; /* Limit the maximum width of the section */
+  margin: 0 auto; /* Center-align the section horizontally */
+}
+
+/* Headings */
+.education-heading, .work-heading {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333; /* Dark gray text */
+  text-align: center; /* Center-align the heading */
+}
+
+/* Lists */
+.education-list, .work-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center-align list items horizontally */
+}
+
+/* List Items */
+.education-list li, .work-list li {
+  width: 90%; /* Make sure items do not overflow */
+  max-width: 1000px; /* Optional: Limit the width of the list items */
+  padding: 25px;
+  border-top: 1px solid #ddd; /* Light gray border */
+  font-size: 24px; /* Increased font size */
+  margin: 0 auto; /* Center-align each list item within the container */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Remove border from the last list item */
+.education-list li:last-child, .work-list li:last-child {
+  border-bottom: none;
+}
+
+/* Bullet Points */
+.education-list li::before, .work-list li::before {
+  content: "\2022"; /* Bullet point */
+  font-size: 24px; /* Increased font size */
+  color: #666; /* Medium gray text */
+  margin-right: 20px; /* Increased margin */
+}
+
+/* More Info Section */
+.more-info {
+  font-size: 14px; /* Base font size */
+  color: #666; /* Medium gray text */
+  padding: 10px 0; /* Vertical padding */
+  display: block; /* Ensures block-level formatting */
+}
+
+/* Certifications Section */
+.certifications-heading {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.certifications-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.certifications-list li {
+  width: 90vw;
+  padding: 25px;
+  border-top: 1px solid #ddd;
+  font-size: 24px;
+}
+
+.certifications-list li:last-child {
+  border-bottom: none;
+}
+
+.certifications-list li::before {
+  content: "\2022";
+  font-size: 24px;
+  color: #666;
+  margin-right: 20px;
+}
+
+/* Courses Section */
+.courses-heading {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.courses-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.courses-list li {
+  width: 90vw;
+  padding: 25px;
+  border-top: 1px solid #ddd;
+  font-size: 24px;
+}
+
+.courses-list li:last-child {
+  border-bottom: none;
+}
+
+.courses-list li::before {
+  content: "\2022";
+  font-size: 24px;
+  color: #666;
+  margin-right: 20px;
+}/* Projects Section */
+.projects-heading {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center; /* Center-align the heading */
+}
+
+.projects-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto; /* Center-align the list */
+  max-width: 1200px; /* Limit the width of the projects list */
+}
+
+.projects-list li {
+  display: flex;
+  align-items: center;
+  padding: 25px;
+  border-top: 1px solid #ddd;
+  font-size: 24px;
+  margin: 0 auto; /* Center-align each list item */
+  max-width: 100%; /* Ensure items do not overflow */
+  flex-direction: column; /* Stack image on top of text */
+  gap: 20px; /* Add gap between image and text */
+}
+
+.projects-list li:last-child {
+  border-bottom: none;
+}
+
+.projects-list .section-image {
+  width: auto; /* Limit the image width */
+  max-width: 400px;
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px; /* Add rounded corners to images */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for a card effect */
+  transform: rotate(0deg); /* Tilt the image */
+  transform-origin: center; /* Ensure the tilt is around the center */
+  display: block; /* Center the image block */
+  margin: 0 auto; /* Center the image horizontally */
+}
+
+.projects-list .text-content {
+  text-align: center; /* Center-align the text content */
+  max-width: 400px; /* Limit width of text content */
+}
+
+.projects-list .text-content h3 {
+  font-size: 28px; /* Slightly larger heading text */
+  margin: 0;
+}
+
+.projects-list .more-info p {
+  font-size: 18px; /* Adjust description text size */
+  margin: 10px 0 0;
+}
+
+
+
+/* Skills Section */
+.skills-heading {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center; /* Center the heading text */
+}
+
+.skills-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center; /* Center the list items */
+}
+
+.skills-list li {
+  display: inline-block; /* Makes list items fit in the center */
+  padding: 25px;
+  border-top: 1px solid #ddd;
+  font-size: 24px;
+  width: auto; /* Adjust width to fit content */
+  margin-bottom: 10px; /* Add some space between items */
+}
+
+.skills-list li:last-child {
+  border-bottom: none;
+}
+
+.skill {
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+}
+
+.skill-name {
+  font-weight: bold;
+}
+
+.skill-level {
+  color: #666;
+}
+
+.skills-list li::before {
+  content: "\2022";
+  font-size: 24px;
+  color: #666;
+  margin-right: 20px;
+}
+
+/* General Styles */
+.text-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.section-image {
+  width: 150px; /* Adjust as needed */
+  height: auto;
+  border-radius: 8px; /* Optional: rounded corners */
+  margin-left: 20px;
+}
+
+ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border-top: 1px solid #ddd;
+  position: relative;
+}
+
+ul li:last-child {
+  border-bottom: none;
+}
+
+ul li::before {
+  content: "\2022";
+  font-size: 24px;
+  color: #666;
+  margin-right: 20px;
+}
+.footer {
+  padding: 20px;
+  background-color: #fff; /* White background color */
+  color: #333; /* Dark text color for contrast */
+  text-align: center; /* Center-align the text */
+  border-top: 1px solid #ddd; /* Light border at the top for separation */
+}
+
+.footer-content {
+  max-width: 1200px; /* Set a maximum width */
+  margin: 0 auto; /* Center-align the footer content */
+}
+
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links a {
+  color: #333; /* Dark text color for links */
+  text-decoration: none; /* Remove underline from links */
+  margin: 0 15px; /* Spacing between links */
+  font-size: 16px; /* Font size for links */
+}
+
+.footer-links a:hover {
+  text-decoration: underline; /* Underline on hover for better UX */
+}
+a {
+  text-decoration: none;
+  color: #0070f3; /* Customize the color as needed */
+}
+
+a:hover {
+  text-decoration: underline;
 }
