@@ -55,38 +55,41 @@
 
 .title {
   margin: 0;
+  padding: 0; /* Or adjust as needed */
   font-size: 4rem;
   text-align: center;
   opacity: 1; /* Fully visible */
   transition: opacity 0.5s ease-out; /* Smooth fade-out effect */
 }
 
-/* @font-face {
+ @font-face {
   font-family: 'MyCustomFont';
-  src: url('/Skyer-TrialVersion.otf') format('opentype');
-} */
+  src: url('/POIAeronautTrial-Regular.otf') format('opentype');
+} 
 
 .title .bold {
-  /* font-family: 'MyCustomFont'; */
+  /* font-family: 'MyCustomFont';  */
+  font-size: 4rem;
   font-weight: bold;
+  margin-top: -1rem;
+  margin-bottom: -9rem; /* Adjust this value as needed */
+
 }
 
 
 .description {
   text-align: center;
-  margin-top: 1rem;
   font-size: 1.5rem;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 4rem;
+  gap: 0rem;
 }
 
 .card {
-  padding: 2rem;
+  padding: 0rem;
   border: 1px solid #ccc;
   border-radius: 5px;
   text-align: left;
@@ -118,7 +121,7 @@
 
 .modal-content {
   background-color: #fefefe;
-  margin: 5% auto;
+  margin: 0% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;

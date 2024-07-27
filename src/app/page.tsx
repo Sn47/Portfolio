@@ -21,10 +21,9 @@ export default function Home() {
 
       <main className="main">
         <h1 className="title">
-          <span className="bold">Ahsan </span>
-          <span className="bold">Naveed</span>
+          <h1 className="bold">Ahsan Naveed</h1>         
           <br />
-          <span className="bold designer">DESIGNER . DEVELOPER . ENGINEER . ARTIST . STUDENT</span>
+          <span className="designer">DESIGNER . DEVELOPER . ENGINEER . ARTIST . STUDENT</span>
 
         </h1>
         <br />
