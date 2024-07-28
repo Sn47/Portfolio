@@ -21,7 +21,7 @@ export default function Home() {
 
       <main className="main">
         <h1 className="title">
-          <h1 className="bold">Ahsan Naveed</h1>         
+          <span className="bold">Ahsan Naveed</span>         
           <br />
           <span className="designer">DESIGNER . DEVELOPER . ENGINEER . ARTIST . STUDENT</span>
 
