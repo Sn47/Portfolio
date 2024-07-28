@@ -345,7 +345,16 @@ export default function Home() {
                 </div>
               </div>
             </li>
-            
+            <li>
+            <img src="350725707-c16a155a-68f9-467a-bf1e-b548e97d2817.jpeg" alt="Project Image 5" className="section-image" />
+
+              <div className="text-content">
+                <h3>PDF Chatbot(2024)</h3>
+                <div className="more-info">
+                  <p>Description: Developed a PDF chatbot with phi3-mini locally setuped.</p>
+                </div>
+              </div>
+            </li>
           </ul>
         </section>
 
