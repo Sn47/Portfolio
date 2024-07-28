@@ -6,9 +6,10 @@ import { useState } from 'react';
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const scrollToSection = (sectionId) => {
+  const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
   };
+  
 
   return (
     <div className="container">
