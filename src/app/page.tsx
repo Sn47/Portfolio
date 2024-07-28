@@ -94,7 +94,7 @@ export default function Home() {
               <div className="text-content">
                 <h3>Website Development Intern at LowCodeSystems</h3>
                 <div className="more-info">
-                  <p>Duration: (Add Duration)</p>
+                  <p>June 2023 - Sept 2023</p>
                   <p>Mastered MERN stack and explored OutSystems, passionate about innovation.</p>
                 </div>
               </div>
@@ -104,7 +104,7 @@ export default function Home() {
               <div className="text-content">
                 <h3>Graphics Director at Nobel10</h3>
                 <div className="more-info">
-                  <p>Duration: (Add Duration)</p>
+                  <p>Oct 2023 - Feb 2024</p>
                   <p>Led UI/UX and graphic design at Nobel10, delivering impactful solutions.</p>
                 </div>
               </div>
@@ -114,7 +114,7 @@ export default function Home() {
               <div className="text-content">
                 <h3>ML Intern at Rapide Technologies</h3>
                 <div className="more-info">
-                  <p>Duration: (Add Duration)</p>
+                  <p>May 2024 - On going</p>
                   <p>Worked on machine learning projects and gained hands-on experience with various algorithms and tools.</p>
                 </div>
               </div>
